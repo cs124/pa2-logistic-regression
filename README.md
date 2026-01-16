@@ -1,13 +1,15 @@
-# PA3 - Logistic Regression
+# PA2 - Logistic Regression
 
 ## Recommended before Starting
 
-We recommend checking out the following before getting started on PA3 Logistic Regression:
+We recommend checking out the following before getting started on PA2 Logistic Regression:
 
 * The Week 3 videos and slides on Logistic Regression.
 * Chapter 5 of Jurafsky and Martin (3rd ed.), particularly sections 5.1-5.4
 
-## Getting the Assignment
+## Cloning the Assignment
+
+### Jupyter Notebook
 
 You can get started using the same steps you followed for PA1. To recap,
 you'll want to:
@@ -16,15 +18,15 @@ you'll want to:
    Ubuntu for Windows for Windows, or SSH into Rice/Myth) the same way you 
    did for PA1. 
 
-1. Clone the git repository for PA3 (this repository) into a folder of your 
+1. Clone the git repository for PA2 (this repository) into a folder of your 
    choice by typing this in your terminal:
       
-        git clone https://github.com/cs124/pa3-logistic-regression.git
+        git clone https://github.com/cs124/pa2-logistic-regression.git
 
 2. Enter the project root directory and activate your cs124 conda environment by
    doing:
    
-        cd pa3-logistic-regression
+        cd pa2-logistic-regression
         conda activate cs124
    
     You should now see `(cs124)` in front of your shell prompt. 
@@ -43,7 +45,7 @@ you'll want to:
     notebook in a browser of your choice.
    
 5. From the Jupyter notebook file explorer window that opens, click on the
-pa3.ipynb file to open and edit it.
+pa2.ipynb file to open and edit it.
 
 ### Google Colaboratory
 
@@ -55,146 +57,40 @@ pa3.ipynb file to open and edit it.
 2. Now go to File->Open Notebook. Go to the GitHub tab. It will ask you to log 
    in to your GitHub account (if you don't have one it is easy to make one).
    Once you've done that, copy and paste the URL: 
-   https://github.com/cs124/pa3-logistic-regression into the search box and hit enter. 
+   https://github.com/cs124/pa2-logistic-regression into the search box and hit enter. 
    It should show:
    
-            Repository: cs124/pa3-logistic-regression
+            Repository: cs124/pa2-logistic-regression
             Branch:  Main
 
-   Click on pa3.ipynb below to load the notebook.
+   Click on pa2.ipynb below to load the notebook.
       
 
-## [NOT RECOMMENDED] - Rice/Myth
+## Submitting your Solution
 
-Rice is the name of a group of machines made available for student use
-by Stanford. Myth machines are similar, but specifically maintained by and
-for the computer science department. For our purposes, they are interchangeable,
-so you should feel free to use whichever one you prefer.
+### macOS/Linux
 
-0. __[WINDOWS ONLY]__ If you are using Windows, you have two options. If you
-were able to install Ubuntu for Windows according to the instructions above,
-you can use that for your terminal/shell to SSH into Rice/Myth (although, if 
-you were able to get Ubuntu for Windows set up we would strongly recommend that
-you try to get things working locally instead of using Rice/Myth). If you
-weren't able to install Ubuntu for Windows, you can instead download and install
-PuTTY [here](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
-to use as an SSH client. Install and run it. 
-
-1. SSH into Rice/Myth.
-   - __[macOS/Linux/Ubuntu for Windows]__
-
-            ssh [Your SUNet]@rice.stanford.edu
-            # OR
-            ssh [Your SUNet]@myth.stanford.edu
-
-   - __[Windows]__ Run PuTTY and when prompted, enter `rice.stanford.edu` or
-    `myth.stanford.edu` in the box labeled Host Name. Do not change any of the
-     other settings. Click open to open a connection, which will cause a 
-     terminal window to pop up. You will then be prompted to log in.
-
-    You'll be prompted for your Stanford SUNet account password. 
-   You will also likely be asked to authenticate using 
-   2-factor authentication.
-
-2. Clone the git repository for PA3 in a location of your choice:
-      
-        git clone https://github.com/cs124/pa3-logistic-regression.git
+1. You can run the submission cell in the Jupyter notebook to zip up your
+solution for you. It should generate a zip file `submission.zip`.
    
-3. Enter the project root directory and activate your cs124 conda environment 
-   (you should have already created this as part of PA0. 
-   If not, please go back and follow the instructions there): 
-   
-        cd pa3-logistic-regression
-        conda activate cs124
+2. Upload the zip file as your solution to the PA2 Logistic Regression assignment in 
+   Gradescope (http://www.gradescope.com).
 
-4. Start up your jupyter notebook server without a browser.
-
-        jupyter notebook --no-browser --port=[pick a number from 1025 to 65535]
-
-5. You now need to set up port forwarding from Rice/Myth to your local machine:
-
-   - __[macOS/Linux/Ubuntu for Windows]__ Open a new terminal window on your
-    local machine (NOTE: don't close the one on Rice/Myth, that one needs to
-     stay open) and enter the following command:
-
-            ssh -NL [local port you'd like to use]:localhost:[port number you picked on rice/myth] [SUNet]@[rice/myth].stanford.edu
-
-    If it worked correctly, nothing should happen and your terminal will appear 
-    to hang. This is fine, you should keep it open to maintain the tunnel.
-
-   - __[Windows]__ Go back to your PuTTY window. In the left-side navigation
-    window and select Connection->SSH->Tunnels. In the right-hand side window,
-     there will be a section labeled "Add new forwarded port". 
-     
-    Under Source port, type the local port you'd like to forward to. 
-    Destination, type:
-
-        [rice/myth].stanford.edu:[port your Jupyter notebook server is running on]
-     
-    Then, click "Add".
-
-6. Finally, try opening a browser of your choice (i.e. Chrome, Firefox, Safari)
-    and opening the URL:
-    
-        localhost:[local port number you chose]
-
-    If everything worked correctly, you'll see the Jupyter file
-    explorer. It may prompt you for an authentication token. If it does,
-    go back to the terminal window that is running the Jupyter notebook server
-    (on Rice/Myth). In the output, you should see some URLs with a portion that
-    looks like "token=...". Copy the token from there and paste it into your
-    browser where requested.
-    
-7. From the Jupyter notebook file explorer window that opens, click on the
-pa3.ipynb file to open it. All your implementation will be done directly in the
-   notebook.
-
-# Submitting your Solution
-
-## macOS/Linux
+### Ubuntu for Windows
 
 1. You can run the cell at the bottom of the Jupyter notebook to zip up your
 solution for you. It should generate a zip file `submission.zip`.
    
-2. Upload the zip file as your solution to the PA3 Logistic Regression assignment in 
+2. Run the following command to transfer that zip file over from WSL to your local computer:
+
+      cp ~/cs124/pa2-logistic-regression/submission.zip /mnt/c/Users/YOUR_USER_NAME/OneDrive/Desktop/
+
+   Note that you may want to replace OneDrive/Desktop/ with another destination folder based on your preferences.
+
+3. Upload the zip file as your solution to the PA2 Logistic Regression assignment in 
    Gradescope (http://www.gradescope.com).
 
-## Ubuntu for Windows
-
-1. You can run the cell at the bottom of the Jupyter notebook to zip up your
-solution for you. It should generate a zip file `submission.zip`.
-   
-2. To access the file easily from Windows (which you'll need to do if you
-   want to upload it to Gradescope), you'll probably want to move or copy
-   it to an easily accessible location in your Windows filesystem. The C
-   drive in Windows is accessible in Ubuntu at `/mnt/c`, so you should copy
-   it to some path there, like `/mnt/c/Users/[your Windows username]/Desktop`,
-   which is the path to your Windows desktop directory.
-   You can do this from your Ubuntu terminal by doing:
-   
-        cp /path/to/submission.zip /mnt/c/Users/[your Windows username]/Desktop
-
-3. Upload the zip file as your solution to the PA3 Logistic Regression assignment in 
-   Gradescope (http://www.gradescope.com).
-
-## Google Colaboratory
-
-1. Once you've saved all your changes, go to File->Download .ipynb to download
-your notebook file to your local machine.
-2. If your solution required any extra files, make sure they were located in
-pa3-logistic-regression/deps. Go to the file explorer on the left-hand side and download
-those as well.
-3. Once you have pa3.ipynb and any deps files you need saved locally,
-create a zip file (either from your OS's file explorer or the terminal), making
-sure that it has the following structure:
-   
-        deps/
-        pa3.ipynb
-
-3. Upload the zip file as your solution to the PA3 Logistic Regression assignment in 
-   Gradescope (http://www.gradescope.com).
-
-## Rice/Myth
+### Rice/Myth
 
 1. You can run the cell at the bottom of the Jupyter notebook to zip up your
 solution for you. It should generate a zip file `submission.zip`.
@@ -204,17 +100,23 @@ local machine.
    
    - __[macOS/Linux/Ubuntu for Windows]__
     
-        Open a terminal on your local machine and run the following command to
-        copy the submission zip file from Rice/Myth to your local machine.
+      After you have created the submission zip, first, run this command to find where the submission zip is:
 
-            scp [SUNet ID]@[myth/rice].stanford.edu:/path/to/submission.zip /local/path/to/copy/to
-    
-        If you're using Ubuntu for Windows, we recommend choosing as your local
-        path something starting with `/mnt/c`, as this is the UNIX path
-        that corresponds to your Windows filesystem. This allows you to download
-        the zip file to a location where it can be easily accessed directly
-        from windows. For example, if you chose `/mnt/c/Users/[your Windows username]/Desktop`
-        as your destination, the file will be saved to your Windows Desktop folder.
+            pwd
+
+      This should return something like
+
+            /afs/.ir/users/YOUR/SUNET/ID/cs124/pa2-logistic-regression
+
+      Copy that command and append submission.zip to it:
+
+            /afs/.ir/users/YOUR/SUNET/ID/cs124/pa2-logistic-regression/submission.zip
+
+      Then, cd into a local folder where you'd like to save the submission zip, and use the following command to copy the zip from Myth to your local machine:
+
+         scp -r [SUNet]@[rice/myth][rice/myth machine number].stanford.edu:/afs/.ir/users/YOUR/SUNET/ID/cs124/pa2-logistic-regression/submission.zip .
+      
+      You can replace . with a relative path to a local directory you'd like to copy the zip file to.
 
    - __[Windows]__ PSCP is another utility that should have been installed
     automatically when you installed PuTTY earlier. Find and run it. In the
@@ -225,5 +127,22 @@ local machine.
     to download the file from Rice/Myth to your local machine. You should now
    be able to access the file locally at c:\temp\submission.zip
    
-3. Upload the zip file as your solution to the PA3 Logistic Regression assignment in 
+3. Upload the zip file as your solution to the PA2 Logistic Regression assignment in 
+   Gradescope (http://www.gradescope.com).
+
+### Google Colaboratory
+
+1. Once you've saved all your changes, go to File->Download .ipynb to download
+your notebook file to your local machine.
+2. If your solution required any extra files, make sure they were located in
+pa2-logistic-regression/deps. Go to the file explorer on the left-hand side and download
+those as well.
+3. Once you have pa2.ipynb and any deps files you need saved locally,
+create a zip file (either from your OS's file explorer or the terminal), making
+sure that it has the following structure:
+   
+        deps/
+        pa2.ipynb
+
+3. Upload the zip file as your solution to the PA2 Logistic Regression assignment in 
    Gradescope (http://www.gradescope.com).

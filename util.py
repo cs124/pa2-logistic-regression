@@ -3,6 +3,7 @@ import os
 import random
 from collections import OrderedDict
 from typing import List, Set, Optional, Union
+import numpy as np
 
 
 class Dataset:
@@ -200,3 +201,59 @@ def evaluate(classifier: Classifier, dataset: Dataset,
                                       else dataset.splits[split_name],
                                       classifier)
         print('Accuracy ({}): {}'.format(split_name, accuracy))
+
+
+########################################################
+# UNIT TESTS BELOW
+########################################################
+
+def check_logistic_loss(logistic_loss_func) -> None:
+    """
+    Checks the logistic_loss() function implementation.
+    """
+    # Use multiple examples to catch "forgot np.mean" errors
+    loss = logistic_loss_func(np.array([0.9, 0.1]), np.array([1, 0]))
+    correct_loss = 0.10536050454671517
+    
+    if np.abs(loss - correct_loss) < 0.01:
+        print("Logistic loss is correct.")
+    else:
+        print("Logistic loss is incorrect.")
+        print("  Input: pred=[0.9, 0.1], true=[1, 0]")
+        print("  Expected:", correct_loss)
+        print("  Got:", loss)
+
+
+def check_gradient_descent(gradient_descent_func,
+                           tolerance: float = 1e-2) -> None:
+    """
+    Checks the gradient_descent() function implementation.
+    """
+    np.random.seed(42)
+    
+    X_test = np.array([[2.0, 3.0], [3.0, 2.0], [3.0, 4.0], [4.0, 3.0],
+                       [0.0, 1.0], [1.0, 0.0], [0.5, 0.5], [0.0, 0.0]])
+    Y_test = np.array([1, 1, 1, 1, 0, 0, 0, 0])
+    
+    W, b = gradient_descent_func(X_test, Y_test, 
+                                 batch_size=8, alpha=0.5, 
+                                 num_iterations=100, print_every=10000,
+                                 epsilon=1e-10)
+    
+    # Pre-computed correct outputs
+    correct_W = np.array([1.3621915472787667, 1.3621915472787667])
+    correct_b = -3.614102491149732
+    
+    # Check W
+    if W.shape != (2,):
+        print("W has wrong shape. Expected (2,) but got", W.shape)
+    elif np.linalg.norm(W - correct_W) <= tolerance:
+        print("W is correct.")
+    else:
+        print("W is incorrect. Got", W, "expected", correct_W)
+    
+    # Check b
+    if np.abs(b - correct_b) <= tolerance:
+        print("b is correct.")
+    else:
+        print("b is incorrect. Got", b, "expected", correct_b)
